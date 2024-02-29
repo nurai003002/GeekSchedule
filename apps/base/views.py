@@ -10,4 +10,7 @@ def index(request):
     # classschedule = models.ClassSchedule.objects.latest('id')
     teacher = models.Teachers.objects.all()
     best = models.Best.objects.all()
+    days = models.DayOfWeek.objects.all()
+    times = models.TimeSlot.objects.all()
+    class_types = models.Class.objects.all()
     return render(request, 'index.html', locals())

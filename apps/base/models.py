@@ -85,20 +85,6 @@ class DirectionSchedule(models.Model):
         verbose_name = '1) Направление для расписания'
         verbose_name_plural = '1) Направления для расписания'
 
-class WeekSchedule(models.Model):
-    direction_choice = models.ForeignKey(DirectionSchedule,related_name='direction_choice', on_delete=models.CASCADE, verbose_name = 'Выбрать направление')
-    title = models.CharField(
-        max_length = 255,
-        verbose_name = 'День недели для расписания'
-    )
-
-    def __str__(self):
-        return self.title
-    
-    class Meta:
-        verbose_name = '2) День недели '
-        verbose_name_plural = '2) Дни недели '
-
 
 
 class Group(models.Model):
@@ -181,4 +167,30 @@ class Best(models.Model):
 
     
 
+class DayOfWeek(models.Model):
+    name = models.CharField(max_length=100)  # e.g., "Понедельник", "Вторник", etc.
 
+    def __str__(self):
+        return self.name
+
+class TimeSlot(models.Model):
+    start_time = models.TimeField()
+    end_time = models.TimeField()
+
+    def __str__(self):
+        return f"{self.start_time} - {self.end_time}"
+
+class Trainer(models.Model):
+    name = models.CharField(max_length=100)  # e.g., "Jack Hakman"
+
+    def __str__(self):
+        return self.name
+
+class Class(models.Model):
+    name = models.CharField(max_length=100)  # e.g., "Hatha Yoga"
+    trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE)
+    day_of_week = models.ForeignKey(DayOfWeek, on_delete=models.CASCADE)
+    time_slot = models.ForeignKey(TimeSlot, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.name} ({self.day_of_week}) {self.time_slot}"
