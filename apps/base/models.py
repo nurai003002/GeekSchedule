@@ -38,7 +38,6 @@ class Settings(models.Model):
         verbose_name_plural = 'Настройки'
 
 
-
 class Slide(models.Model):
     title = models.CharField(
         max_length = 255,
@@ -72,6 +71,36 @@ class Direction(models.Model):
         verbose_name = 'Направление'
         verbose_name_plural = 'Направления'
 
+
+class DirectionSchedule(models.Model):
+    title = models.CharField(
+        max_length = 255,
+        verbose_name = 'Название напрвления для расписания'
+    )
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = '1) Направление для расписания'
+        verbose_name_plural = '1) Направления для расписания'
+
+class WeekSchedule(models.Model):
+    direction_choice = models.ForeignKey(DirectionSchedule,related_name='direction_choice', on_delete=models.CASCADE, verbose_name = 'Выбрать направление')
+    title = models.CharField(
+        max_length = 255,
+        verbose_name = 'День недели для расписания'
+    )
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = '2) День недели '
+        verbose_name_plural = '2) Дни недели '
+
+
+
 class Group(models.Model):
     title = models.CharField(
         max_length = 255,
@@ -84,6 +113,7 @@ class Group(models.Model):
     class Meta:
         verbose_name = 'Группа'
         verbose_name_plural = 'Группы'
+
 
 
 class ClassSchedule(models.Model):

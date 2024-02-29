@@ -234,8 +234,8 @@
 								<h1 class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="1s">{{slide.title}}</h1>
 							    <p class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="1.5s">{{slide.description|safe}}</p>
 								<div class="my-btn wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="2s">
-									<a href="#services" class="main-btn"><span>Learn More</span></a>
-									<a href="#contact" class="main-btn custom-btn"><span>Contact Us</span></a>
+									<a href="#services" class="main-btn"><span>записаться</span></a>
+									<a href="#contact" class="main-btn custom-btn"><span>расписание</span></a>
 								</div>
 							</div>
 						 </div>
@@ -250,7 +250,43 @@
         </section>
         
         <!-- ========== End Home ========== -->
-		
+
+		<section id="testimonials" class="testimonials"style='background:linear-gradient(-45deg, #cf11da 0%, #3482fd 100%);'>
+			<div class="container">
+				<i class="flaticon-lotus"></i>
+				<div class="row">
+					<div class="col-md-12 owl-carousel owl-theme">
+						{% for best in best %}
+						<!-- New Item -->
+						<div>
+
+					
+						<div class="testimonial-box"  style="background: url({{best.image.url}});background-repeat: no-repeat;background-size: cover;background-position: center;">
+							<div class="client-info">
+								<div class="client-pic">
+								</div>
+								<div class="client-details">
+								</div>
+							</div>
+							<div class="description">
+
+							    <div class="star">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+							</div>
+							
+						</div>
+						<p style="text-align: center;">{{best.description|safe}}</p>
+					</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+        </section>
 		<!-- ========== Start Services ========== -->
         
         <section class="services" id="services">
@@ -415,26 +451,24 @@
 						<tr class="table-head">
 							<td></td>
 							<td>
-								Monday
+								Понедельник
 							</td>
 							<td>
-								Tuesday
+								Вторник
 							</td>
 							<td>
-								Wednesday
+								Среда
 							</td>
 							<td>
-								Thursday
+								Четверг
 							</td>
 							<td>
-								Friday
+								Пятница
 							</td>
 							<td>
-								Saturday
+								Суббота
 							</td>
-							<td>
-								Sunday
-							</td>
+							
 						</tr>
 						<tr>
 							<td class="time">
@@ -868,38 +902,7 @@
         
         <!-- ========== Start Testimonials ========== -->
         
-        <section id="testimonials" class="testimonials">
-			<div class="container">
-				<i class="flaticon-lotus"></i>
-				<div class="row">
-					<div class="col-md-12 owl-carousel owl-theme">
-						{% for best in best %}
-						<!-- New Item -->
-						<div class="testimonial-box">
-							<div class="client-info">
-								<div class="client-pic">
-									<img src="{{best.image.url}}" alt="client">
-								</div>
-								<div class="client-details">
-									<h6>{{best.name}}</h6>
-								</div>
-							</div>
-							<div class="description">
-								<p>{{best.description|safe}}</p>
-							    <div class="star">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-							</div>
-						</div>
-						{% endfor %}
-					</div>
-				</div>
-			</div>
-        </section>
+        
         
         <!-- ========== End Testimonials ========== -->
         
